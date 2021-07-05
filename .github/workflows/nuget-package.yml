@@ -41,7 +41,7 @@ jobs:
       uses: snow-actions/line-notify@v1.0.0
       with:
         access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
-        message: "Start building [jenuine-core] [${{ steps.prep.outputs.version }}]..."
+        message: "Start building [jenuine-core] [${{ steps.prep.outputs.version }}-${{ steps.prep.outputs.suffix }}]..."
 
     - name: Build
       run: dotnet build --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
@@ -68,4 +68,4 @@ jobs:
       uses: snow-actions/line-notify@v1.0.0
       with:
         access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
-        message: "Done building [jenuine-core] [${{ steps.prep.outputs.version }}] with status [${{job.status}}]"
+        message: "Done building [jenuine-core] [${{ steps.prep.outputs.version }}-${{ steps.prep.outputs.suffix }}] with status [${{job.status}}]"
