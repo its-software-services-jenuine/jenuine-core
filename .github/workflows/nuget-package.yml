@@ -47,7 +47,7 @@ jobs:
       run: dotnet build --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
     
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${{ steps.prep.outputs.version }} --output JenuineCore --version-suffix ${{ steps.prep.outputs.suffix }}
+      run: dotnet pack --configuration Release /p:Version=${{ steps.prep.outputs.version }} -p:PackageID=JenuineCore --version-suffix ${{ steps.prep.outputs.suffix }}
 
     - run: dotnet nuget push jenuine-core/bin/Release/jenuine-core.${{ steps.prep.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_API_KEY}
       env:
