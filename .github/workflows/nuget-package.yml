@@ -49,6 +49,10 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
 
+    - run: dotnet nuget push jenuine-core.${{ steps.prep.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 #    - name: SonarScanner for .NET 5 with pull request decoration support
 #      uses: highbyte/sonarscan-dotnet@2.0
 #      with:
