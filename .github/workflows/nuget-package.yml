@@ -47,7 +47,7 @@ jobs:
       run: dotnet build --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
     
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${{ steps.prep.outputs.version }}
+      run: dotnet pack --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
 
 #    - name: SonarScanner for .NET 5 with pull request decoration support
 #      uses: highbyte/sonarscan-dotnet@2.0
