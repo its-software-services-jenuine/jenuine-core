@@ -24,7 +24,7 @@ jobs:
       run: |
         VERSION=latest
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-        SUFFIX=""
+        SUFFIX="released"
 
         if [[ $GITHUB_REF == refs/tags/* ]]; then
           VERSION=${GITHUB_REF#refs/tags/v}
