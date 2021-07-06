@@ -30,7 +30,7 @@ namespace jenuine_core_console
             svc.AddProduct(prd);
 */
             var products = svc.GetProducts(new MProduct(), new QueryParam());
-            products.ForEach(m => Console.WriteLine(m.ToJson(new JsonWriterSettings { Indent = true })));
+            Console.WriteLine(products.ToJson(new JsonWriterSettings { Indent = true }));
         }
     }
 }
