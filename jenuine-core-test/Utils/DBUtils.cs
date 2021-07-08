@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Moq;
 using MongoDB.Driver;
 using Its.Jenuiue.Core.Database;
@@ -8,19 +9,18 @@ namespace Its.Jenuiue.Core.Utils
     {
         public static IDatabase CreateMockedMongoDb<T>()
         {
-            var idmmMocked = new Mock<IMongoIndexManager<T>>();
+            //var a = new MongoCollectionBase<T>();
+            //var b = new MongoIndexManagerBase<T>();
+            //var c = new MongoDatabaseBase();
+            //var d = new MongoClientBase();
 
-            var collMocked = new Mock<IMongoCollection<T>>();
-            collMocked.Setup(x => x.Indexes).Returns(idmmMocked.Object);
+            var dbMocked = new MockedMongoDatabase();
+            dbMocked.SetCollection<T>(new MockedMongoCollection<T>());
 
-            var dbMock = new Mock<IMongoDatabase>();
-            dbMock.Setup( x => x.GetCollection<T>(It.IsAny<string>(), It.IsAny<MongoCollectionSettings>()))
-                .Returns(collMocked.Object);
+            var clientMocked = new MockedMongoClient();
+            clientMocked.Database = dbMocked;
 
-            var cli = new Mock<IMongoClient>();
-            cli.Setup(x => x.GetDatabase(It.IsAny<string>(), It.IsAny<MongoDatabaseSettings>())).Returns(dbMock.Object);
-
-            var m = new MongoDatabase(cli.Object);
+            var m = new MongoDatabase(clientMocked);
 
             return m;
         }
