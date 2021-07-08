@@ -8,6 +8,5 @@ namespace Its.Jenuiue.Core.Database
     {
         public IMongoDatabase GetOrganizeDb(string orgId);
         public IMongoCollection<T> GetCollectionGlobal<T>(string name);
-        public IMongoCollection<BsonDocument> GetBsonCollectionGlobal<T>(string name);
     }
 }

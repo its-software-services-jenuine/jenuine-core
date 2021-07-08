@@ -43,6 +43,12 @@ namespace Its.Jenuiue.Core.Actions
             return collection;
         }
 
+        public string GetDocumentCollectionName()
+        {
+            string name= GetCollectionName();
+            return name;
+        }
+
         public T Apply<T>(T param)
         {
             (param as BaseModel).CreatedDtm = DateTime.UtcNow;

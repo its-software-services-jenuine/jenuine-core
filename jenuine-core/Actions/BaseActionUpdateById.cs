@@ -25,7 +25,12 @@ namespace Its.Jenuiue.Core.Actions
             dbConn = conn;
             db = conn.GetOrganizeDb(orgId);
         }
-
+        public string GetDocumentCollectionName()
+        {
+            string name= GetCollectionName();
+            return name;
+        }
+        
         public T Apply<T>(T param)
         {
             string objectId = (param as BaseModel).Id;

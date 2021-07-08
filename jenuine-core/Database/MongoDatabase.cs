@@ -26,12 +26,6 @@ namespace Its.Jenuiue.Core.Database
         {
             var coll = globalDb.GetCollection<T>(name);
             return coll;
-        }
-
-        public IMongoCollection<BsonDocument> GetBsonCollectionGlobal<T>(string name)
-        {
-            var coll = globalDb.GetCollection<BsonDocument>(name);
-            return coll;
-        }        
+        }     
     }
 }
