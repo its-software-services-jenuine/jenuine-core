@@ -2,7 +2,7 @@ name: Jenuine Core
 
 on:
   push:
-    branches: [ main ] #develop
+    branches: [ main, develop ] #develop
     tags: ['v*.*.*']
 
 env:
@@ -43,6 +43,9 @@ jobs:
       with:
         access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
         message: "Start building [jenuine-core] [${{ steps.prep.outputs.version }}]..."
+        
+    - name: Install apt packages
+      run: sudo apt-get update && sudo apt-get install -y mongodb-org
 
     - name: Build
       run: dotnet build --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
