@@ -21,12 +21,6 @@ namespace Its.Jenuiue.Core.Actions
             db = conn.GetOrganizeDb(orgId);
         }
 
-        public string GetDocumentCollectionName()
-        {
-            string name= GetCollectionName();
-            return name;
-        }
-
         public T Apply<T>(string objectId)
         {
             bool isGlobalDb = UseGlobalDb();
