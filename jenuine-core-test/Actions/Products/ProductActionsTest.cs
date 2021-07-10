@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Utils;
@@ -7,8 +8,6 @@ namespace Its.Jenuiue.Core.Actions.Products
 {
     public class ProductActionsTest
     {
-        private string tableName = "products";
-
         [Fact]
         public void ProductScenarioActionTest()
         {
@@ -88,7 +87,27 @@ namespace Its.Jenuiue.Core.Actions.Products
 
             var queryAct = new GetProductsAction(db, orgId);
             var list = queryAct.Apply<MProduct>(new MProduct(), new QueryParam());
-            Assert.Equal(0, list.Count);                      
+            Assert.Empty(list);
+        }
+
+
+        [Fact]
+        public void AddDuplicateProductsTest()
+        {
+            string orgId = "AddDuplicateProductsTest";
+            var db = DBUtils.CreateMockedMongoDb<MProduct>();
+
+            var addAct = new AddProductAction(db, orgId);
+            var p1 = new MProduct() 
+            { 
+                ProductId = "UpdateProductByIdActionTestId",
+                ProductName = "UpdateProductByIdActionTestName" 
+            };
+            var m = addAct.Apply<MProduct>(p1);
+
+            Assert.Throws<MongoDB.Driver.MongoWriteException>(() => {
+                addAct.Apply<MProduct>(m);
+            });
         }
     }
 }
