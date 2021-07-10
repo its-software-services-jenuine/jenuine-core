@@ -25,7 +25,7 @@ namespace Its.Jenuiue.Core.Actions
             dbConn = conn;
             db = conn.GetOrganizeDb(orgId);
         }
-
+        
         public T Apply<T>(T param)
         {
             string objectId = (param as BaseModel).Id;

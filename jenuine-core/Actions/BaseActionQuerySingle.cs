@@ -10,11 +10,7 @@ namespace Its.Jenuiue.Core.Actions
 
         protected abstract string GetCollectionName();
 
-        protected virtual FilterDefinition<T> GetFilter<T>(T model)
-        {
-            var filter = FilterDefinition<T>.Empty;
-            return filter;
-        }
+        protected abstract FilterDefinition<T> GetFilter<T>(T model);
 
         protected virtual bool UseGlobalDb()
         {

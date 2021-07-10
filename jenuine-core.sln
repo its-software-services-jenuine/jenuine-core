@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jenuine-core", "jenuine-cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jenuine-core-test", "jenuine-core-test\jenuine-core-test.csproj", "{D9305F6E-4C42-4F68-855C-5610DEE94C5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jenuine-core-console", "jenuine-core-console\jenuine-core-console.csproj", "{0F608672-4CC7-44F2-A272-B19F3714DBD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{D9305F6E-4C42-4F68-855C-5610DEE94C5C}.Release|x64.Build.0 = Release|Any CPU
 		{D9305F6E-4C42-4F68-855C-5610DEE94C5C}.Release|x86.ActiveCfg = Release|Any CPU
 		{D9305F6E-4C42-4F68-855C-5610DEE94C5C}.Release|x86.Build.0 = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|x64.Build.0 = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Debug|x86.Build.0 = Debug|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|x64.ActiveCfg = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|x64.Build.0 = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F608672-4CC7-44F2-A272-B19F3714DBD8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
