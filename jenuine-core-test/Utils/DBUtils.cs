@@ -6,7 +6,7 @@ namespace Its.Jenuiue.Core.Utils
     public static class DBUtils
     {
         private static MongoDbRunner runner = MongoDbRunner.Start(
-            binariesSearchPatternOverride : "mongod",
+            binariesSearchPatternOverride : "/usr/bin/mongod",
             binariesSearchDirectory : "/usr/bin");
 
         private static MongoClient client = new MongoClient(runner.ConnectionString);
