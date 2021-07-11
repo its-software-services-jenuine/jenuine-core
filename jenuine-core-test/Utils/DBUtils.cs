@@ -5,7 +5,7 @@ namespace Its.Jenuiue.Core.Utils
 {
     public static class DBUtils
     {
-        private static MongoDbRunner runner = MongoDbRunner.Start(binariesSearchDirectory : "/usr/bin/mongod");
+        private static MongoDbRunner runner = MongoDbRunner.Start(binariesSearchDirectory : "/usr/bin");
         private static MongoClient client = new MongoClient(runner.ConnectionString);
 
         public static IDatabase CreateMockedMongoDb<T>()
