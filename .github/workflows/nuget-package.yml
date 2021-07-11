@@ -2,7 +2,7 @@ name: Jenuine Core
 
 on:
   push:
-    branches: [ main ] #develop
+    branches: [ main, develop ] #develop
     tags: ['v*.*.*']
 
 env:
