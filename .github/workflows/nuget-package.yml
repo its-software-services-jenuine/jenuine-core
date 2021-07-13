@@ -2,7 +2,7 @@ name: Jenuine Core
 
 on:
   push:
-    branches: [ main ] #develop
+    branches: [ main, develop ] #develop
     tags: ['v*.*.*']
 
 env:
@@ -43,6 +43,9 @@ jobs:
       with:
         access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
         message: "Start building [jenuine-core] [${{ steps.prep.outputs.version }}]..."
+        
+#    - name: Install apt packages
+#      run: sudo apt-get update && sudo apt-get install -y mongodb-org
 
     - name: Build
       run: dotnet build --configuration Release /p:Version=${{ steps.prep.outputs.version }} --version-suffix ${{ steps.prep.outputs.suffix }}
@@ -55,7 +58,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: SonarScanner for .NET 5 with pull request decoration support
-      uses: highbyte/sonarscan-dotnet@2.0
+      uses: its-software-services-devops/sonarscan-dotnet@v2.1.2-beta
       with:
         # The key of the SonarQube project
         sonarProjectKey: its-software-services-jenuine_jenuine-core
@@ -64,9 +67,10 @@ jobs:
         # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
         sonarOrganization: its-software-services-jenuine
         # Optional command arguments to dotnet test
-        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        #dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
         # Optional extra command arguments the the SonarScanner 'begin' command
         sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+        dotnetDisableTests: true
 
     - name: show job status
       if: always()
