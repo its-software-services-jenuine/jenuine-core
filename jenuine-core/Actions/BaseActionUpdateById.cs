@@ -56,7 +56,7 @@ namespace Its.Jenuiue.Core.Actions
                 updateDef = updateDef.Set(field, value);
             }
 
-            var result = collection.UpdateOne(filter, updateDef);
+            collection.UpdateOne(filter, updateDef);
 
             return param;
         }
