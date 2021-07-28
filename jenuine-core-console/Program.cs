@@ -22,7 +22,20 @@ namespace jenuine_core_console
             svc.SetOrgId("console-test");
 
             var products = svc.GetProducts(new MProduct(), new QueryParam());
-            Console.WriteLine(products.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(products.ToJson(new JsonWriterSettings { Indent = true }));
+
+            var prd = new MProduct()
+            {
+                ProductId = DateTime.Now.TimeOfDay.ToString(),
+                ProductName = "Aut Test product name"
+            };
+            //svc.AddProduct(prd);
+
+            var cnt = svc.GetProductsCount();
+            Console.WriteLine("Product count is [{0}]", cnt);
+
+            prd = svc.GetProductById(new MProduct() { Id = "60fff755965eef8f32270865" } );
+            Console.WriteLine(prd.ToJson(new JsonWriterSettings { Indent = true }));
         }
     }
 }
