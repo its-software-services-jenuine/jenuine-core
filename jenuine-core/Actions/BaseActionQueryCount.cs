@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
 
 namespace Its.Jenuiue.Core.Actions
