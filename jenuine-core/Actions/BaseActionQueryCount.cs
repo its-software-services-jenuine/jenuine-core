@@ -4,7 +4,7 @@ using Its.Jenuiue.Core.Database;
 
 namespace Its.Jenuiue.Core.Actions
 {
-    public abstract class BaseActionQueryCount : IActionQueryCount
+    public abstract class BaseActionQueryCount : IActionQueryCount 
     {
         private IDatabase dbConn;
         private IMongoDatabase db;

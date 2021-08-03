@@ -33,8 +33,8 @@ namespace Its.Jenuiue.Core.Actions.Assets
             Assert.Equal(2, count);
 
             var queryAct = new GetAssetCountAction(db, orgId);
-            var list = queryAct.Apply<MAsset>(new MAsset(), new QueryParam());
-            Assert.Equal(2, list.Count);
+            var list = queryAct.Apply<MAsset>(new MAsset());           
+            Assert.Equal(2, list);
 
             var delAct = new DeleteAssetByIdAction(db, orgId);
             delAct.Apply<MAsset>(p2.Id);
@@ -57,11 +57,11 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var addAct = new AddAssetAction(db, orgId);
             var p1 = new MAsset() 
             { 
-                ProductId = "UpdateAssetsByIdActionTestId",
-                ProductName = "UpdateAssetsByIdActionTestName" 
+                AssetId = "UpdateAssetsByIdActionTestId",
+                AssetName = "UpdateAssetsByIdActionTestName" 
             };
             var m = addAct.Apply<MAsset>(p1);
-            m.ProductName = "UpdatedAssetsName";
+            m.AssetName = "UpdatedAssetsName";
 
             var updateByIdAct = new UpdateAssetByIdAction(db, orgId);
             updateByIdAct.Apply<MAsset>(m);
@@ -69,10 +69,10 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            Assert.Equal("UpdatedAssetsName", u.ProductName);
+            Assert.Equal("UpdatedAssetsName", u.AssetName);
         }
         
-/*
+
         [Fact]
         public void GetAssetByIdNothingActionTest()
         {
@@ -91,6 +91,26 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var list = queryAct.Apply<MAsset>(new MAsset());
             Assert.Empty(list.ToString());
         }
+        [Fact]
+        public void AddDuplicateAssetTest()
+        {
+            string orgId = "AddDuplicateAssetTest";
+            var db = DBUtils.CreateMockedMongoDb<MAsset>();
+
+            var addAct = new AddAssetAction(db, orgId);
+            var p1 = new MAsset() 
+            { 
+                AssetId = "UpdateAssetByIdActionTestId",
+                AssetName = "UpdateAssetByIdActionTestName" 
+            };
+            var m = addAct.Apply<MAsset>(p1);
+
+            Assert.Throws<MongoDB.Driver.MongoWriteException>(() => {
+                addAct.Apply<MAsset>(m);
+            });
+        }
         */
+        
+        
     }
 }
