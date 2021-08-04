@@ -8,7 +8,6 @@ namespace Its.Jenuiue.Core.Actions.Assets
 {
     public class AssetActionsTest
     {
-        /*
         [Fact]
         public void AssetScenarioActionTest()
         {
@@ -16,8 +15,8 @@ namespace Its.Jenuiue.Core.Actions.Assets
 
             var db = DBUtils.CreateMockedMongoDb<MAsset>();
 
-            var addAct = new AddAssetAction(db, orgId);
-            var p1 = new MAsset() { ProductId = "0001" };
+            var addAct = new AddAssetAction(db,orgId);
+            var p1 = new MAsset() { AssetId = "0001" };
             var m = addAct.Apply<MAsset>(p1);
             Assert.NotEqual("", m.Id);
 
@@ -26,15 +25,15 @@ namespace Its.Jenuiue.Core.Actions.Assets
 
             Assert.Equal(1, count);
 
-            var p2 = new MAsset() { ProductId = "0002" };
+            var p2 = new MAsset() { AssetId = "0002" };
             p2 = addAct.Apply<MAsset>(p2);
 
             count = countAct.Apply<MAsset>(new MAsset());
             Assert.Equal(2, count);
 
-            var queryAct = new GetAssetCountAction(db, orgId);
-            var list = queryAct.Apply<MAsset>(new MAsset());           
-            Assert.Equal(2, list);
+            var queryAct = new GetAssetsAction(db, orgId);
+            var list = queryAct.Apply<MAsset>(new MAsset(), new QueryParam());
+            Assert.Equal(2, list.Count);
 
             var delAct = new DeleteAssetByIdAction(db, orgId);
             delAct.Apply<MAsset>(p2.Id);
@@ -44,24 +43,24 @@ namespace Its.Jenuiue.Core.Actions.Assets
 
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var p3 = getByIdAct.Apply<MAsset>(p1);
-            Assert.Equal(p1.ProductId, p3.ProductId); 
+            Assert.Equal(p1.AssetId, p3.AssetId); 
         }
-        
+
         [Fact]
-        public void UpdateAssetsByIdActionTest()
+        public void UpdateAssetByIdActionTest()
         {
-            string orgId = "UpdateAssetsByIdActionTest";
+            string orgId = "UpdateAssetByIdActionTest";
 
             var db = DBUtils.CreateMockedMongoDb<MAsset>();
 
             var addAct = new AddAssetAction(db, orgId);
             var p1 = new MAsset() 
             { 
-                AssetId = "UpdateAssetsByIdActionTestId",
-                AssetName = "UpdateAssetsByIdActionTestName" 
+                AssetId = "UpdateAssetByIdActionTestId",
+                AssetName = "UpdateAssetByIdActionTestName" 
             };
             var m = addAct.Apply<MAsset>(p1);
-            m.AssetName = "UpdatedAssetsName";
+            m.AssetName = "UpdatedAssetName";
 
             var updateByIdAct = new UpdateAssetByIdAction(db, orgId);
             updateByIdAct.Apply<MAsset>(m);
@@ -69,9 +68,8 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            Assert.Equal("UpdatedAssetsName", u.AssetName);
+            Assert.Equal("UpdatedAssetName", m.AssetName);
         }
-        
 
         [Fact]
         public void GetAssetByIdNothingActionTest()
@@ -79,7 +77,7 @@ namespace Its.Jenuiue.Core.Actions.Assets
             string orgId = "GetAssetByIdNothingActionTest";
             var db = DBUtils.CreateMockedMongoDb<MAsset>();
 
-            var getByIdAct = new GetAssetCountAction(db, orgId);
+            var getByIdAct = new GetAssetByIdAction(db, orgId);
             var p = getByIdAct.Apply<MAsset>(new MAsset());
             Assert.Null(p);
 
@@ -87,14 +85,16 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var count = countAct.Apply<MAsset>(new MAsset());
             Assert.Equal(0, count);
 
-            var queryAct = new GetAssetCountAction(db, orgId);
-            var list = queryAct.Apply<MAsset>(new MAsset());
-            Assert.Empty(list.ToString());
+            var queryAct = new GetAssetsAction(db, orgId);
+            var list = queryAct.Apply<MAsset>(new MAsset(), new QueryParam());
+            Assert.Empty(list);
         }
+
+
         [Fact]
-        public void AddDuplicateAssetTest()
+        public void AddDuplicateAssetsTest()
         {
-            string orgId = "AddDuplicateAssetTest";
+            string orgId = "AddDuplicateAssetsTest";
             var db = DBUtils.CreateMockedMongoDb<MAsset>();
 
             var addAct = new AddAssetAction(db, orgId);
@@ -109,8 +109,5 @@ namespace Its.Jenuiue.Core.Actions.Assets
                 addAct.Apply<MAsset>(m);
             });
         }
-        */
-        
-        
     }
 }
