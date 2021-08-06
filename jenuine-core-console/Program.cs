@@ -2,10 +2,11 @@
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
+using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
+using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
 using Its.Jenuiue.Core.Models.Organization;
-using Its.Jenuiue.Core.Models;
 
 namespace jenuine_core_console
 {
@@ -29,6 +30,27 @@ namespace jenuine_core_console
                 ProductId = DateTime.Now.TimeOfDay.ToString(),
                 ProductName = "Aut Test product name"
             };
+
+            string orgId = "TestOrgID";
+            var addAct = new AddAssetAction(db, orgId);
+            var p1 = new MAsset() 
+            { 
+                AssetId = "UpdateAssetByIdActionTestId",
+                AssetName = "UpdateAssetByIdActionTestName" 
+            };
+            var m = addAct.Apply<MAsset>(p1);
+            m.AssetName = "UpdatedAssetName";
+
+            var updateByIdAct = new UpdateAssetByIdAction(db, orgId);
+            updateByIdAct.Apply<MAsset>(m);
+
+            var getByIdAct = new GetAssetByIdAction(db, orgId);
+            var u = getByIdAct.Apply<MAsset>(m);
+
+            Console.WriteLine(u.AssetName);
+            
+
+            
             //svc.AddProduct(prd);
 
             var cnt = svc.GetProductsCount();
