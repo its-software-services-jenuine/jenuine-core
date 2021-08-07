@@ -52,8 +52,5 @@ namespace Its.Jenuiue.Core.Services.Assets
             svc.UpdateAssetRegisterFlag(m);
             svc.DeleteAsset(m);
         }
-        
-        
-
     }
 }

@@ -47,9 +47,9 @@ namespace Its.Jenuiue.Core.Actions.Assets
         }
 
         [Fact]
-        public void UpdateAssetByIdActionTest()
+        public void UpdateAssetByIdActionExcludeTest()
         {
-            string orgId = "UpdateAssetByIdActionTest";
+            string orgId = "UpdateAssetByIdActionExcludeTest";
 
             var db = DBUtils.CreateMockedMongoDb<MAsset>();
 
@@ -68,7 +68,35 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            Assert.Equal("UpdatedAssetName", m.AssetName);
+            //This is to test that we don't allow to update 'AssetName' field
+            Assert.Equal("UpdateAssetByIdActionTestName", u.AssetName);
+        }
+
+        [Fact]
+        public void UpdateAssetByIdActionIncludeTest()
+        {
+            string orgId = "UpdateAssetByIdActionIncludeTest";
+
+            var db = DBUtils.CreateMockedMongoDb<MAsset>();
+
+            var addAct = new AddAssetAction(db, orgId);
+            var p1 = new MAsset() 
+            { 
+                AssetId = "UpdateAssetByIdActionTestId",
+                AssetName = "UpdateAssetByIdActionTestName",
+                IsRegistered = false                
+            };
+            var m = addAct.Apply<MAsset>(p1);
+
+            m.IsRegistered = true;
+
+            var updateByIdAct = new UpdateAssetByIdAction(db, orgId);
+            updateByIdAct.Apply<MAsset>(m);
+
+            var getByIdAct = new GetAssetByIdAction(db, orgId);
+            var u = getByIdAct.Apply<MAsset>(m);
+
+            Assert.Equal(true, u.IsRegistered);
         }
 
         [Fact]
@@ -89,7 +117,6 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var list = queryAct.Apply<MAsset>(new MAsset(), new QueryParam());
             Assert.Empty(list);
         }
-
 
         [Fact]
         public void AddDuplicateAssetsTest()

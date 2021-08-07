@@ -18,7 +18,7 @@ namespace jenuine_core_console
 
             var conn = new MongoClient(connStr);
             var db = new MongoDatabase(conn);
-
+/*
             var svc = new ProductsService(db);
             svc.SetOrgId("console-test");
 
@@ -30,8 +30,8 @@ namespace jenuine_core_console
                 ProductId = DateTime.Now.TimeOfDay.ToString(),
                 ProductName = "Aut Test product name"
             };
-
-            string orgId = "TestOrgID";
+*/
+            string orgId = "TestOrgID-test1";
             var addAct = new AddAssetAction(db, orgId);
             var p1 = new MAsset() 
             { 
@@ -40,24 +40,24 @@ namespace jenuine_core_console
             };
             var m = addAct.Apply<MAsset>(p1);
             m.AssetName = "UpdatedAssetName";
-
+Console.WriteLine("DEBUG0 new generated id={0}, name={1}", m.Id, m.AssetName);
             var updateByIdAct = new UpdateAssetByIdAction(db, orgId);
             updateByIdAct.Apply<MAsset>(m);
 
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
-
-            Console.WriteLine(u.AssetName);
+Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
+            //Console.WriteLine(u.AssetName);
             
 
             
             //svc.AddProduct(prd);
 
-            var cnt = svc.GetProductsCount();
-            Console.WriteLine("Product count is [{0}]", cnt);
+            //var cnt = svc.GetProductsCount();
+            //Console.WriteLine("Product count is [{0}]", cnt);
 
-            prd = svc.GetProductById(new MProduct() { Id = "60fff755965eef8f32270865" } );
-            Console.WriteLine(prd.ToJson(new JsonWriterSettings { Indent = true }));
+            //prd = svc.GetProductById(new MProduct() { Id = "60fff755965eef8f32270865" } );
+            //Console.WriteLine(prd.ToJson(new JsonWriterSettings { Indent = true }));
         }
     }
 }
