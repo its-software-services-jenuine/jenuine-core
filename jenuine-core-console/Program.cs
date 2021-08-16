@@ -7,6 +7,7 @@ using Its.Jenuiue.Core.Database;
 using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
 using Its.Jenuiue.Core.Models.Organization;
+using Its.Jenuiue.Core.Services.Registration;
 
 namespace jenuine_core_console
 {
@@ -31,6 +32,7 @@ namespace jenuine_core_console
                 ProductName = "Aut Test product name"
             };
 */
+/*
             string orgId = "TestOrgID-test1";
             var addAct = new AddAssetAction(db, orgId);
             var p1 = new MAsset() 
@@ -48,9 +50,14 @@ Console.WriteLine("DEBUG0 new generated id={0}, name={1}", m.Id, m.AssetName);
             var u = getByIdAct.Apply<MAsset>(m);
 Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             //Console.WriteLine(u.AssetName);
-            
+            */
+            var svc = new RegistrationService(db);
+            svc.SetOrgId("TestRegistration");
+            svc.AddRegistration(new MRegistration());
+            var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
+            Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
 
-            
+             
             //svc.AddProduct(prd);
 
             //var cnt = svc.GetProductsCount();
