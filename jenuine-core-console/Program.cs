@@ -51,11 +51,16 @@ Console.WriteLine("DEBUG0 new generated id={0}, name={1}", m.Id, m.AssetName);
 Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             //Console.WriteLine(u.AssetName);
             */
-            var svc = new RegistrationService(db);
+            var svc = new RegistrationService(db);           
+            var mregistration = new MRegistration();
             svc.SetOrgId("TestRegistration");
-            svc.AddRegistration(new MRegistration());
-            var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
-            Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
+            var sd = svc.AddRegistration(mregistration);
+            
+            
+            
+           // Console.WriteLine(newsvc.ToJson(new JsonWriterSettings { Indent = true }));
+            //var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
+            //Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
 
              
             //svc.AddProduct(prd);

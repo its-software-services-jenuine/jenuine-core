@@ -15,7 +15,7 @@ namespace Its.Jenuiue.Core.Services.Registration
         
         protected override string GetCollectionName()
         {
-            return "products";
+            return "registration";
         }
         
         protected override FilterDefinition<T> GetFilter<T>(T model)
