@@ -52,15 +52,24 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             //Console.WriteLine(u.AssetName);
             */
             var svc = new RegistrationService(db);           
-            var mregistration = new MRegistration();
+            var mregistration = new MRegistration()
+            {
+                RegistrationId = DateTime.Now.ToString(),
+            };
+                        
             svc.SetOrgId("TestRegistration");
-            var sd = svc.AddRegistration(mregistration);
+            //var sd = svc.AddRegistration(mregistration);
+            var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
+            //var getregisid = svc.GetRegistrationById(mregistration);           
+            //Console.WriteLine(getregisid.ToJson(new JsonWriterSettings { Indent = true }));
+            Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
+            svc.DeleteRegistration(mregistration);
             
-            
-            
-           // Console.WriteLine(newsvc.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(deleteregis.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(sd.ToJson(new JsonWriterSettings { Indent = true }));
+            // Console.WriteLine(newsvc.ToJson(new JsonWriterSettings { Indent = true }));
             //var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
-            //Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
+            
 
              
             //svc.AddProduct(prd);
