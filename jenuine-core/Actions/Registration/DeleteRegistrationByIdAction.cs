@@ -3,9 +3,9 @@ using Its.Jenuiue.Core.Database;
 
 namespace Its.Jenuiue.Core.Services.Registration
 {
-    public class DeleteRegistrationAction : BaseActionDeleteById
+    public class DeleteRegistrationByIdAction : BaseActionDeleteById
     {
-        public DeleteRegistrationAction(IDatabase conn, string orgId)
+        public DeleteRegistrationByIdAction(IDatabase conn, string orgId)
         {
             Init(conn, orgId);
         }

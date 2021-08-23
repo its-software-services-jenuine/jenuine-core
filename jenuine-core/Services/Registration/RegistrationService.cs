@@ -49,9 +49,9 @@ namespace Its.Jenuiue.Core.Services.Registration
             return cnt;
 
         }
-        public MRegistration DeleteRegistration(MRegistration param)
+        public MRegistration DeleteRegistrationById(MRegistration param)
         {
-            var act = new DeleteRegistrationAction(database, orgId);
+            var act = new DeleteRegistrationByIdAction(database, orgId);
             var result = act.Apply<MRegistration>(param.Id);
 
             return result;

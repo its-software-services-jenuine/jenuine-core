@@ -11,6 +11,6 @@ namespace Its.Jenuiue.Core.Services.Registration
         public List<MRegistration> GetRegistration(MRegistration param, QueryParam queryParam);
         public MRegistration GetRegistrationById(MRegistration param);
         public long GetRegistrationCount();
-        public MRegistration DeleteRegistration(MRegistration param);
+        public MRegistration DeleteRegistrationById(MRegistration param);
     }
 }

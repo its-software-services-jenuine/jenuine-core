@@ -58,14 +58,25 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             };
                         
             svc.SetOrgId("TestRegistration");
-            //var sd = svc.AddRegistration(mregistration);
+            //var addregis = svc.AddRegistration(mregistration);
             var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
-            //var getregisid = svc.GetRegistrationById(mregistration);           
-            //Console.WriteLine(getregisid.ToJson(new JsonWriterSettings { Indent = true }));
-            Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
-            svc.DeleteRegistration(mregistration);
+            var getregistrationbyid = svc.GetRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" } );  
+            var deletebyid = svc.DeleteRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" });       
+            var count = svc.GetRegistrationCount(); 
+
+            Console.WriteLine("Registration count is [{0}]", count);
+            Console.WriteLine(deletebyid.ToJson(new JsonWriterSettings { Indent = true })); 
+            Console.WriteLine("Registration count is [{0}]", count);   
+            //Console.WriteLine(delete.ToJson(new JsonWriterSettings { Indent = true }));    
+            //Console.WriteLine(getregistrationbyid.ToJson(new JsonWriterSettings { Indent = true }));
             
-            //Console.WriteLine(deleteregis.ToJson(new JsonWriterSettings { Indent = true }));
+            
+    
+            //Console.WriteLine(getregistration.ToJson(new JsonWriterSettings { Indent = true }));
+            
+            //svc.DeleteRegistration(mregistration);
+            
+            
             //Console.WriteLine(sd.ToJson(new JsonWriterSettings { Indent = true }));
             // Console.WriteLine(newsvc.ToJson(new JsonWriterSettings { Indent = true }));
             //var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
