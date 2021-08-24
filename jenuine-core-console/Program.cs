@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
+using System.Collections.Generic;
 using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
 using Its.Jenuiue.Core.Models.Organization;
@@ -55,18 +56,20 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             var mregistration = new MRegistration()
             {
                 RegistrationId = DateTime.Now.ToString(),
+                Id = "611e421b000cf461964795bf",
+                
             };
                         
             svc.SetOrgId("TestRegistration");
             //var addregis = svc.AddRegistration(mregistration);
             var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
-            var getregistrationbyid = svc.GetRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" } );  
-            var deletebyid = svc.DeleteRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" });       
-            var count = svc.GetRegistrationCount(); 
-
-            Console.WriteLine("Registration count is [{0}]", count);
-            Console.WriteLine(deletebyid.ToJson(new JsonWriterSettings { Indent = true })); 
-            Console.WriteLine("Registration count is [{0}]", count);   
+            var getregistrationbyid = svc.GetRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" } );
+            //svc.DeleteRegistrationById(mregistration); 
+            //svc.DeleteRegistrationById(mregistration); 
+            var count = svc.GetRegistrationCount();
+            Console.WriteLine("Registration count is [{0}]", count); 
+            svc.DeleteRegistrationById(mregistration); 
+            Console.WriteLine("Registration count is [{0}]", count);  
             //Console.WriteLine(delete.ToJson(new JsonWriterSettings { Indent = true }));    
             //Console.WriteLine(getregistrationbyid.ToJson(new JsonWriterSettings { Indent = true }));
             
