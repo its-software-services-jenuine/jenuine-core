@@ -12,7 +12,7 @@ namespace Its.Jenuiue.Core.Services.Registration
 
         protected override string GetCollectionName()
         {
-            return "registration";
+            return "registrations";
         }                     
     }
 }

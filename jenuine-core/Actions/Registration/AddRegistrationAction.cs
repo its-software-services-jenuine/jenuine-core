@@ -7,7 +7,7 @@ namespace Its.Jenuiue.Core.Services.Registration
 {
     public class AddRegistrationAction : BaseActionAdd
     {
-        private readonly string collName = "registration";
+        private readonly string collName = "registrations";
 
         public AddRegistrationAction(IDatabase conn, string orgId)
         {
