@@ -3,6 +3,7 @@ using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
 using System.Collections.Generic;
 using Its.Jenuiue.Core.Models.Organization;
+using Its.Jenuiue.Core.Actions.Registration;
 
 namespace Its.Jenuiue.Core.Services.Registration
 {

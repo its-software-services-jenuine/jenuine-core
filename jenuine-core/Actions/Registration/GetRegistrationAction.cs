@@ -4,7 +4,7 @@ using Its.Jenuiue.Core.Models.Organization;
 
 using MongoDB.Driver;
 
-namespace Its.Jenuiue.Core.Services.Registration
+namespace Its.Jenuiue.Core.Actions.Registration
 {
     public class GetRegistrationAction : BaseActionQuery
     {

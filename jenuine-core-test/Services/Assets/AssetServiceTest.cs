@@ -11,6 +11,7 @@ namespace Its.Jenuiue.Core.Services.Assets
     public class AssetServiceTest
     {
         private IDatabase mydatabase;
+        
         [Fact]
         public void SetOrgidTest()
         {

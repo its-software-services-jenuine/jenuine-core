@@ -56,7 +56,7 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             var mregistration = new MRegistration()
             {
                 RegistrationId = DateTime.Now.ToString(),
-                Id = "611e421b000cf461964795bf",
+                //Id = "611e421b000cf461964795bf",
                 
             };
                         
