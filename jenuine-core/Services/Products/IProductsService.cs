@@ -8,10 +8,16 @@ namespace Its.Jenuiue.Core.Services.Products
     {
         public void SetOrgId(string id);
         public List<MProduct> GetProducts(MProduct param, QueryParam queryParam);
+
         public MProduct GetProductById(MProduct param);
+
         public long GetProductsCount();
+
         public MProduct AddProduct(MProduct param);
+
         public MProduct UpdateProduct(MProduct param);
+
         public MProduct DeleteProduct(MProduct param);
+        
     }
 }
