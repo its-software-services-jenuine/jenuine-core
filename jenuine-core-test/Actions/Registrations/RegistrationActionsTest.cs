@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Utils;
@@ -16,9 +17,12 @@ namespace Its.Jenuiue.Core.Actions.Registration
 
             var db = DBUtils.CreateMockedMongoDb<MRegistration>();
 
-            var addAct = new AddRegistrationAction(db, orgId);
-            
-            var p1 = new MRegistration() { RegistrationId = "0001" };
+            var addAct = new AddRegistrationAction(db, orgId);            
+            var p1 = new MRegistration() 
+            { 
+                RegistrationId = "0001",
+                Headers = new List<string>() { "Head1", "Header2", "Header3" }
+            };
             var m = addAct.Apply<MRegistration>(p1);
             Assert.NotEqual("", m.Id);
 
@@ -46,8 +50,11 @@ namespace Its.Jenuiue.Core.Actions.Registration
             var getByIdAct = new GetRegistrationByIdAction(db, orgId);
             var p3 = getByIdAct.Apply<MRegistration>(p1);
             Assert.Equal(p1.RegistrationId, p3.RegistrationId); 
+            Assert.Equal(p1.Id, p3.Id);
+            
+            Assert.Equal(3, p3.Headers.Count);
+            Assert.Equal(p1.Headers[1], p3.Headers[1]);
         }
-
 
         [Fact]
         public void GetRegistrationByIdNothingActionTest()
@@ -67,7 +74,6 @@ namespace Its.Jenuiue.Core.Actions.Registration
             var list = queryAct.Apply<MRegistration>(new MRegistration(), new QueryParam());
             Assert.Empty(list);
         }
-
 
         [Fact]
         public void AddDuplicateRegistrationTest()
