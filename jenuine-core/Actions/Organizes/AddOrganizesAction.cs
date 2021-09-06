@@ -9,6 +9,11 @@ namespace Its.Jenuiue.Core.Actions.Organizes
     public class AddOrganizesAction : BaseActionAdd
     {
         private readonly string collName = "organizes";
+    
+        protected override bool UseGlobalDb()
+        {
+            return true;
+        }
 
         public AddOrganizesAction(IDatabase conn, string orgId)
         {
@@ -20,7 +25,7 @@ namespace Its.Jenuiue.Core.Actions.Organizes
                 Unique = true
             };
 
-            var pdIdField = new StringFieldDefinition<MOrganize>("OrganizesId");
+            var pdIdField = new StringFieldDefinition<MOrganize>("OrganizeId");
             var indexDefinition = new IndexKeysDefinitionBuilder<MOrganize>().Ascending(pdIdField);
             var idxModel = new CreateIndexModel<MOrganize>(indexDefinition, option);
 
