@@ -9,11 +9,14 @@ namespace Its.Jenuiue.Core.Actions.Organizes
     public class AddOrganizesAction : BaseActionAdd
     {
         private readonly string collName = "organizes";
-    
+        /*
         protected override bool UseGlobalDb()
         {
             return true;
         }
+        */
+        
+        
 
         public AddOrganizesAction(IDatabase conn, string orgId)
         {

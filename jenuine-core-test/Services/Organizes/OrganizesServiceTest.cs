@@ -1,3 +1,4 @@
+
 using Xunit;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Utils;
@@ -16,7 +17,7 @@ namespace Its.Jenuiue.Core.Services.Products
 
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
 
-            var svc = new ProductsService(db);
+            var svc = new OrganizesService(db);
             svc.SetOrgId(orgId);
 
             var q = new QueryParam()
@@ -25,10 +26,10 @@ namespace Its.Jenuiue.Core.Services.Products
                 Offset = 0
             };
 
-            var p = new MProduct();
-            svc.GetProducts(p, q);
-            svc.GetProductById(new MProduct());
-            svc.GetProductsCount();
+            var p = new MOrganize();
+            svc.GetOrganizes(p, q);
+            svc.GetOrganizeById(new MOrganize());
+            svc.GetOrganizeCount();
             
             var lbl = new Label()
             {
@@ -36,11 +37,12 @@ namespace Its.Jenuiue.Core.Services.Products
                 Value = "value"
             };
 
-            var m = svc.AddProduct(new MProduct());
+            var m = svc.AddOrganize(new MOrganize());
             m.Labels.Add(lbl);
-            svc.UpdateProduct(m);
+            svc.UpdateOrganize(m);
 
-            svc.DeleteProduct(m);
+            svc.DeleteOrganize(m);
         }
     }
 }
+

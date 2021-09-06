@@ -1,3 +1,4 @@
+
 using System;
 using Xunit;
 using Its.Jenuiue.Core.Models;
@@ -113,4 +114,5 @@ namespace Its.Jenuiue.Core.Actions.Organizes
         
     }
 }
+
 

@@ -17,6 +17,10 @@ namespace Its.Jenuiue.Core.Services.Organizes
         {
             database = db;
         }
+        public void SetOrgId(string org)
+        {
+            orgId = org;
+        }
 
 
         public List<MOrganize> GetOrganizes(MOrganize param, QueryParam queryParam)
