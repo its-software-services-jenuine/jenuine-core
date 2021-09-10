@@ -6,7 +6,9 @@ using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
 using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
+using Its.Jenuiue.Core.Actions.Organizes;
 using Its.Jenuiue.Core.Models.Organization;
+
 using Its.Jenuiue.Core.Services.Registration;
 
 namespace jenuine_core_console
@@ -19,6 +21,12 @@ namespace jenuine_core_console
 
             var conn = new MongoClient(connStr);
             var db = new MongoDatabase(conn);
+        
+
+            string orgId = "TestMyOrg";
+            var myorg = new AddOrganizesAction(db,orgId);
+            
+            
 /*
             var svc = new ProductsService(db);
             svc.SetOrgId("console-test");
@@ -51,6 +59,7 @@ Console.WriteLine("DEBUG0 new generated id={0}, name={1}", m.Id, m.AssetName);
 Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             //Console.WriteLine(u.AssetName);
             */
+            /*
             var svc = new RegistrationService(db);           
             var mregistration = new MRegistration()
             {
@@ -67,6 +76,9 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             svc.DeleteRegistrationById(mregistration);
             //Console.WriteLine(deletebyid.ToJson(new JsonWriterSettings { Indent = true })); 
             Console.WriteLine("Registration count is [{0}]", count);   
+            */
+
+
             //Console.WriteLine(delete.ToJson(new JsonWriterSettings { Indent = true }));    
             //Console.WriteLine(getregistrationbyid.ToJson(new JsonWriterSettings { Indent = true }));
             
