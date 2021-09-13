@@ -12,7 +12,7 @@ namespace Its.Jenuiue.Core.Actions
         private IMongoDatabase db;
 
         protected abstract string GetCollectionName();
-
+        
         protected virtual bool UseGlobalDb()
         {
             return false;

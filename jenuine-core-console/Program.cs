@@ -4,9 +4,12 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
+using Its.Jenuiue.Core.Models.Global;
 using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
 using Its.Jenuiue.Core.Actions.Organizes;
+using Its.Jenuiue.Core.Services.Organizes;
+
 using Its.Jenuiue.Core.Models.Organization;
 
 using Its.Jenuiue.Core.Services.Registration;
@@ -23,8 +26,8 @@ namespace jenuine_core_console
             var db = new MongoDatabase(conn);
         
 
-            string orgId = "TestMyOrg";
-            var myorg = new AddOrganizesAction(db,orgId);
+            
+            
             
             
 /*
@@ -71,12 +74,34 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             var getregistration = svc.GetRegistration(new MRegistration(), new QueryParam());
             var getregistrationbyid = svc.GetRegistrationById(new MRegistration() { Id = "611cee785261421f5469f577" } );       
             var count = svc.GetRegistrationCount(); 
+
+            
             
             Console.WriteLine("Registration count is [{0}]", count);
             svc.DeleteRegistrationById(mregistration);
             //Console.WriteLine(deletebyid.ToJson(new JsonWriterSettings { Indent = true })); 
             Console.WriteLine("Registration count is [{0}]", count);   
             */
+            //string orgId = "TestMyOrg";
+            var orgsvc = new OrganizesService(db);
+            var morganize = new MOrganize()
+            {
+                OrganizeId = DateTime.Now.ToString(),
+            };
+            orgsvc.SetOrgId("TestOrganize");
+            
+            var addorg = orgsvc.AddOrganize(morganize);
+            //var getorg = orgsvc.GetOrganizes(new MOrganize(), new QueryParam());
+            var count = orgsvc.GetOrganizeCount();
+        
+            Console.WriteLine("Organizes count is [{0}]", count);
+            //orgsvc.DeleteOrganizeById(morganize);
+            Console.WriteLine("Organizes count is [{0}]", count);
+            //Console.WriteLine(getorg.ToJson(new JsonWriterSettings { Indent = true }));
+            
+            
+           
+            //var myorg = new AddOrganizesAction(db,orgId);
 
 
             //Console.WriteLine(delete.ToJson(new JsonWriterSettings { Indent = true }));    
@@ -102,6 +127,7 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
 
             //prd = svc.GetProductById(new MProduct() { Id = "60fff755965eef8f32270865" } );
             //Console.WriteLine(prd.ToJson(new JsonWriterSettings { Indent = true }));
+            
         }
     }
 }

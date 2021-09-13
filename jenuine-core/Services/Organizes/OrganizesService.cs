@@ -25,7 +25,7 @@ namespace Its.Jenuiue.Core.Services.Organizes
 
         public List<MOrganize> GetOrganizes(MOrganize param, QueryParam queryParam)
         {
-            var act = new GetOrganizesAction(database, orgId);
+            var act = new GetOrganizesAction(database, orgId);            
             var results = act.Apply<MOrganize>(param, queryParam);
 
             return results;
@@ -34,9 +34,8 @@ namespace Its.Jenuiue.Core.Services.Organizes
         public MOrganize AddOrganize(MOrganize param)
         {
             var act = new AddOrganizesAction(database, orgId);
-
-            param.OrganizeId = string.Format("{0}-{1}", param.PinNo, param.SerialNo);
             var result = act.Apply<MOrganize>(param);
+
 
             return result;
         }
@@ -67,7 +66,7 @@ namespace Its.Jenuiue.Core.Services.Organizes
             return result;
         }
 
-        public MOrganize DeleteOrganize(MOrganize param)
+        public MOrganize DeleteOrganizeById(MOrganize param)
         {
             var act = new DeleteOrganizesByIdAction(database, orgId);
             var result = act.Apply<MOrganize>(param.Id);

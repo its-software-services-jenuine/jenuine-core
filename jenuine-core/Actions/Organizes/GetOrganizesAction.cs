@@ -1,5 +1,8 @@
-using MongoDB.Driver;
+using Its.Jenuiue.Core.Actions;
 using Its.Jenuiue.Core.Database;
+using Its.Jenuiue.Core.Models.Organization;
+
+using MongoDB.Driver;
 
 namespace Its.Jenuiue.Core.Actions.Organizes
 {
@@ -20,5 +23,8 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             var filter = FilterDefinition<T>.Empty;
             return filter;
         }
+        
     }
+        
 }
+
