@@ -27,7 +27,7 @@ namespace Its.Jenuiue.Core.Services.Products
             };
 
             var p = new MOrganize();
-            svc.GetOrganizes(p, q);
+            svc.GetOrganize(p, q);
             svc.GetOrganizeById(new MOrganize());
             svc.GetOrganizeCount();
             

@@ -15,8 +15,10 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             return true;
         }
         
-
         
+        
+        
+   
 
         public AddOrganizesAction(IDatabase conn, string orgId)
         {

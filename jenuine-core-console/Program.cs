@@ -88,15 +88,16 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             {
                 OrganizeId = DateTime.Now.ToString(),
             };
-            orgsvc.SetOrgId("TestOrganize");
-            
+
+            orgsvc.SetOrgId("TestOrganize");      
             var addorg = orgsvc.AddOrganize(morganize);
-            //var getorg = orgsvc.GetOrganizes(new MOrganize(), new QueryParam());
+            //var getorganize = orgsvc.GetOrganize(new MOrganize(), new QueryParam());
             var count = orgsvc.GetOrganizeCount();
         
             Console.WriteLine("Organizes count is [{0}]", count);
+            
             //orgsvc.DeleteOrganizeById(morganize);
-            Console.WriteLine("Organizes count is [{0}]", count);
+           //Console.WriteLine("Organizes count is [{0}]", count);
             //Console.WriteLine(getorg.ToJson(new JsonWriterSettings { Indent = true }));
             
             

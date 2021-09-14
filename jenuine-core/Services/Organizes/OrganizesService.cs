@@ -23,7 +23,7 @@ namespace Its.Jenuiue.Core.Services.Organizes
         }
 
 
-        public List<MOrganize> GetOrganizes(MOrganize param, QueryParam queryParam)
+        public List<MOrganize> GetOrganize(MOrganize param, QueryParam queryParam)
         {
             var act = new GetOrganizesAction(database, orgId);            
             var results = act.Apply<MOrganize>(param, queryParam);
