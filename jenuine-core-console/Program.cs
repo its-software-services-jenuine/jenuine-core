@@ -24,11 +24,7 @@ namespace jenuine_core_console
 
             var conn = new MongoClient(connStr);
             var db = new MongoDatabase(conn);
-        
-
-            
-            
-            
+     
             
 /*
             var svc = new ProductsService(db);
@@ -83,22 +79,50 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             Console.WriteLine("Registration count is [{0}]", count);   
             */
             //string orgId = "TestMyOrg";
+            
             var orgsvc = new OrganizesService(db);
             var morganize = new MOrganize()
             {
                 OrganizeId = DateTime.Now.ToString(),
             };
 
-            orgsvc.SetOrgId("TestOrganize");      
-            var addorg = orgsvc.AddOrganize(morganize);
-            //var getorganize = orgsvc.GetOrganize(new MOrganize(), new QueryParam());
+            orgsvc.SetOrgId("Organize");      
+            //var addorg = orgsvc.AddOrganize(morganize);
+            var getorganize = orgsvc.GetOrganize(new MOrganize(), new QueryParam());
+            var getorganizebyid = orgsvc.GetOrganizeById(new MOrganize() { Id = "6141da92235c28f44b140838"});
             var count = orgsvc.GetOrganizeCount();
         
             Console.WriteLine("Organizes count is [{0}]", count);
+            orgsvc.DeleteOrganizeById(morganize);
+            Console.WriteLine("Organizes count is [{0}]", count);
+            
+            Console.WriteLine("Organizes count is [{0}]", count);
+            /*
+            string orgId = "TestOrgID-test2";
+            var addAct = new AddOrganizesAction(db, orgId);
+            var p1 = new MOrganize() 
+            { 
+                OrganizeId = "UpdateOrganizeByIdActionTestId",
+                OrganizeName = "UpdateOrganizeByIdActionTestName" 
+            };
+            var m = addAct.Apply<MOrganize>(p1);
+            
+            m.OrganizeName = "UpdatedOrganizeName";
+            Console.WriteLine("DEBUG0 new generated id={0}, name={1}", m.Id, m.OrganizeName);
+            var updateByIdAct = new UpdateOrganizesByIdAction(db, orgId);
+            updateByIdAct.Apply<MOrganize>(m);
+
+            var getByIdAct = new GetOrganizesByIdAction(db, orgId);
+            var u = getByIdAct.Apply<MOrganize>(m);
+            Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.OrganizeName);
+            */
+            //Console.WriteLine(u.AssetName);
             
             //orgsvc.DeleteOrganizeById(morganize);
            //Console.WriteLine("Organizes count is [{0}]", count);
-            //Console.WriteLine(getorg.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(getorganize.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(getorganizebyid.ToJson(new JsonWriterSettings { Indent = true }));
+            
             
             
            
