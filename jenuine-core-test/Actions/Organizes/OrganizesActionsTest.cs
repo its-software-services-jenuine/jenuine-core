@@ -102,7 +102,7 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             var addAct = new AddOrganizesAction(db, orgId);
             var p1 = new MOrganize() 
             { 
-                OrganizeId = "UpdateOrganizeByIdActionTestId",
+                OrganizeId = "AddDuplicateOrganizesTest",
                 OrganizeName = "UpdateOrganizeByIdActionTestName" 
             };
             var m = addAct.Apply<MOrganize>(p1);
