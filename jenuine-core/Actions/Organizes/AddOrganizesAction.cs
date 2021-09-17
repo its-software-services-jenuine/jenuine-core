@@ -10,12 +10,13 @@ namespace Its.Jenuiue.Core.Actions.Organizes
     {
         private readonly string collName = "organizes";
         
-        /*
+        
         protected override bool UseGlobalDb()
         {
             return true;
         }
-        */
+        
+        
         
         
 
