@@ -8,8 +8,7 @@ namespace Its.Jenuiue.Core.Actions.Organizes
 {
     public class AddOrganizesAction : BaseActionAdd
     {
-        private readonly string collName = "organizes";
-        
+        private readonly string collName = "organizes";   
         
         protected override bool UseGlobalDb()
         {
@@ -17,9 +16,6 @@ namespace Its.Jenuiue.Core.Actions.Organizes
         }
         
         
-        
-        
-
         public AddOrganizesAction(IDatabase conn, string orgId)
         {
             Init(conn, orgId);

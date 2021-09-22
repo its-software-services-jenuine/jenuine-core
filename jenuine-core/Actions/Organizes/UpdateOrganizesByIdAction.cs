@@ -15,6 +15,11 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             return "organizes";
         }
 
+        protected override bool UseGlobalDb()
+        {
+            return true;
+        }
+        
         protected override List<string>GetUpdateFields()
         {
             var fields = new List<string>() 

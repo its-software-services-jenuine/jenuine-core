@@ -13,6 +13,11 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             Init(conn, orgId);
         }
         
+        protected override bool UseGlobalDb()
+        {
+            return true;
+        }
+                
         protected override string GetCollectionName()
         {
             return "organizes";
