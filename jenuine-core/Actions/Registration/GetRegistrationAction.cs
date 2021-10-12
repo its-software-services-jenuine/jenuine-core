@@ -17,6 +17,7 @@ namespace Its.Jenuiue.Core.Actions.Registration
         {
             return "registrations";
         }
+
         
         protected override FilterDefinition<T> GetFilter<T>(T model)
         {
