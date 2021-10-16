@@ -17,6 +17,9 @@ namespace Its.Jenuiue.Core.Actions.Organizes
 
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
 
+//var delAll = new DeleteOrganizesAllAction(db, orgId);
+//delAll.Apply<MOrganize>();
+
             var addAct = new AddOrganizesAction(db, orgId);
             var p1 = new MOrganize() { OrganizeId = "0001" };
             var m = addAct.Apply<MOrganize>(p1);
