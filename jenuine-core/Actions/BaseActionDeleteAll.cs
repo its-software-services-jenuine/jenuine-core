@@ -11,11 +11,8 @@ namespace Its.Jenuiue.Core.Actions
         
 
         protected abstract string GetCollectionName();
+        protected abstract bool UseGlobalDb();
 
-        protected virtual bool UseGlobalDb()
-        {
-            return false;
-        }
 
         protected void Init(IDatabase conn, string orgId)
         {
