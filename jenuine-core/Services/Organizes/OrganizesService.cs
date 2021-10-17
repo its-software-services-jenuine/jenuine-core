@@ -73,5 +73,11 @@ namespace Its.Jenuiue.Core.Services.Organizes
 
             return result;
         }
+        public int DeleteOrganizeAll()
+        {
+            var act = new DeleteOrganizesAllAction(database,orgId);
+            var result = act.Apply<MOrganize>();
+            return result;
+        }
     }
 }

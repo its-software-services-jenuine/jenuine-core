@@ -89,10 +89,14 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             orgsvc.SetOrgId("Organize");      
             //orgsvc.AddOrganize(morganize);
             var getorganize = orgsvc.GetOrganize(new MOrganize(), new QueryParam());
+            
             //var getorganizebyid = orgsvc.GetOrganizeById(new MOrganize() { Id = "6141da92235c28f44b140838"});
             var count = orgsvc.GetOrganizeCount();
             Console.WriteLine("OrganizeCount = [{0}]",count);
             Console.WriteLine(getorganize.ToJson(new JsonWriterSettings { Indent = true }));
+            orgsvc.DeleteOrganizeAll();
+
+
 /* 
             foreach (MOrganize o in getorganize)
             {

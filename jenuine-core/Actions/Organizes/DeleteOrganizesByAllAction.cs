@@ -14,6 +14,7 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             return true;
         }
         
+        
         protected override string GetCollectionName()
         {
             return "organizes";

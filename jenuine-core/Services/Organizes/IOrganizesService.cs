@@ -12,5 +12,7 @@ namespace Its.Jenuiue.Core.Services.Organizes
         public long GetOrganizeCount();
         public MOrganize UpdateOrganize(MOrganize param);
         public MOrganize DeleteOrganizeById(MOrganize param);
+
+        public int DeleteOrganizeAll();
     }
 }

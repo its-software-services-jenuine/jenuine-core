@@ -17,8 +17,8 @@ namespace Its.Jenuiue.Core.Actions.Organizes
 
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
 
-//var delAll = new DeleteOrganizesAllAction(db, orgId);
-//delAll.Apply<MOrganize>();
+            var delAll = new DeleteOrganizesAllAction(db, orgId);
+            delAll.Apply<MOrganize>();
 
             var addAct = new AddOrganizesAction(db, orgId);
             var p1 = new MOrganize() { OrganizeId = "0001" };
@@ -28,23 +28,23 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             var countAct = new GetOrganizesCountAction(db, orgId);
             var count = countAct.Apply<MOrganize>(new MOrganize());
 
-            Assert.Equal(3, count);
+            Assert.Equal(1, count);
 
             var p2 = new MOrganize() { OrganizeId = "0002" };
             p2 = addAct.Apply<MOrganize>(p2);
 
             count = countAct.Apply<MOrganize>(new MOrganize());
-            Assert.Equal(4, count);
+            Assert.Equal(2, count);
 
             var queryAct = new GetOrganizesAction(db, orgId);
             var list = queryAct.Apply<MOrganize>(new MOrganize(), new QueryParam());
-            Assert.Equal(4, list.Count);
+            Assert.Equal(2, list.Count);
 
             var delAct = new DeleteOrganizesByIdAction(db, orgId);
             delAct.Apply<MOrganize>(p2.Id);
 
             count = countAct.Apply<MOrganize>(new MOrganize());
-            Assert.Equal(3, count); 
+            Assert.Equal(1, count); 
 
             var getByIdAct = new GetOrganizesByIdAction(db, orgId);
             var p3 = getByIdAct.Apply<MOrganize>(p1);
@@ -57,6 +57,9 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             string orgId = "UpdateOrganizesByIdActionTest";
 
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
+
+            var delAll = new DeleteOrganizesAllAction(db, orgId);
+            delAll.Apply<MOrganize>();
 
             var addAct = new AddOrganizesAction(db, orgId);
             var p1 = new MOrganize() 
@@ -82,17 +85,20 @@ namespace Its.Jenuiue.Core.Actions.Organizes
             string orgId = "GetOrganizesByIdNothingActionTest";
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
 
+            var delAll = new DeleteOrganizesAllAction(db, orgId);
+            delAll.Apply<MOrganize>();
+
             var getByIdAct = new GetOrganizesByIdAction(db, orgId);
             var p = getByIdAct.Apply<MOrganize>(new MOrganize());
             Assert.Null(p);
 
             var countAct = new GetOrganizesCountAction(db, orgId);
             var count = countAct.Apply<MOrganize>(new MOrganize());
-            Assert.Equal(2, count);
+            Assert.Equal(0, count);
 
-            //var queryAct = new GetOrganizesAction(db, orgId);
-            //var list = queryAct.Apply<MOrganize>(new MOrganize(), new QueryParam());
-            //Assert.Empty(list);
+            var queryAct = new GetOrganizesAction(db, orgId);
+            var list = queryAct.Apply<MOrganize>(new MOrganize(), new QueryParam());
+            Assert.Empty(list);
         }
 
 
@@ -101,6 +107,9 @@ namespace Its.Jenuiue.Core.Actions.Organizes
         {
             string orgId = "AddDuplicateOrganizesTest";
             var db = DBUtils.CreateMockedMongoDb<MOrganize>();
+
+            var delAll = new DeleteOrganizesAllAction(db, orgId);
+            delAll.Apply<MOrganize>();
 
             var addAct = new AddOrganizesAction(db, orgId);
             var p1 = new MOrganize() 
@@ -114,6 +123,8 @@ namespace Its.Jenuiue.Core.Actions.Organizes
                 addAct.Apply<MOrganize>(m);
             });
         }
+
+        
         
     }
 }

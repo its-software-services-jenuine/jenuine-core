@@ -42,6 +42,7 @@ namespace Its.Jenuiue.Core.Services.Products
             svc.UpdateOrganize(m);
 
             svc.DeleteOrganizeById(m);
+            svc.DeleteOrganizeAll();
         }
     }
 }
