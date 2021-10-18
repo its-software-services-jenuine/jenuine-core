@@ -8,11 +8,11 @@ namespace Its.Jenuiue.Core.Actions
         private IDatabase dbConn;
         private IMongoDatabase db;
 
-        
 
         protected abstract string GetCollectionName();
-        protected abstract bool UseGlobalDb();
 
+        protected abstract bool UseGlobalDb();
+           
 
         protected void Init(IDatabase conn, string orgId)
         {
