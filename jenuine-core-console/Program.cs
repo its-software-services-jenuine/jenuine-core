@@ -4,10 +4,11 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using Its.Jenuiue.Core.Models;
 using Its.Jenuiue.Core.Database;
-using Its.Jenuiue.Core.Models.Global;
+using Its.Jenuiue.Core.Models.Global; 
 using Its.Jenuiue.Core.Actions.Assets;
 using Its.Jenuiue.Core.Services.Products;
 using Its.Jenuiue.Core.Actions.Organizes;
+using Its.Jenuiue.Core.Services.Customers;
 using Its.Jenuiue.Core.Services.Organizes;
 
 using Its.Jenuiue.Core.Models.Organization;
@@ -79,7 +80,8 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             Console.WriteLine("Registration count is [{0}]", count);   
             */
             //string orgId = "TestMyOrg";
-            
+
+            /*
             var orgsvc = new OrganizesService(db);
             var morganize = new MOrganize()
             {
@@ -95,7 +97,26 @@ Console.WriteLine("DEBUG1 get id={0}, name={1}", u.Id, u.AssetName);
             Console.WriteLine("OrganizeCount = [{0}]",count);
             Console.WriteLine(getorganize.ToJson(new JsonWriterSettings { Indent = true }));
             orgsvc.DeleteOrganizeAll();
+            */
 
+            var customersvc = new CustomersService(db);
+            var mcustomer = new MCustomer()
+            {
+                CustomerId = DateTime.Now.ToString()
+            };
+
+            customersvc.SetOrgId("Customer");
+            //customersvc.AddCustomer(mcustomer);
+            var getcustomercount = customersvc.GetCustomerCount();
+            var getcustomer = customersvc.GetCustomer(new MCustomer(), new QueryParam());
+            //var getcustomerbyid = customersvc.GetCustomerById(new MCustomer() { Id = "6177ad6c561cca2f321960c9"});
+            //var deletebyid = customersvc.DeleteCustomerById(new MCustomer() { Id = "6177b06daf14a3eb984e7d42"});
+            //Console.WriteLine(getcustomerbyid.ToJson(new JsonWriterSettings { Indent = true }));
+            //Console.WriteLine(deletebyid.ToJson(new JsonWriterSettings { Indent = true }));
+            Console.WriteLine(getcustomer.ToJson(new JsonWriterSettings { Indent = true }));
+            //customersvc.DeleteCustomerAll();
+            //Console.WriteLine("CostomerCount = {0}",getcustomercount);
+            
 
 /* 
             foreach (MOrganize o in getorganize)

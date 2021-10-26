@@ -6,7 +6,7 @@ using Its.Jenuiue.Core.Models.Global;
 using Its.Jenuiue.Core.Services.Organizes;
 using Its.Jenuiue.Core.Models.Organization;
 
-namespace Its.Jenuiue.Core.Services.Products
+namespace Its.Jenuiue.Core.Services.Organizes
 {
     public class OrganizesServiceTest
     {

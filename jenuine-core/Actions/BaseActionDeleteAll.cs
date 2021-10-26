@@ -12,7 +12,7 @@ namespace Its.Jenuiue.Core.Actions
         protected abstract string GetCollectionName();
 
         protected abstract bool UseGlobalDb();
-           
+        
 
         protected void Init(IDatabase conn, string orgId)
         {
