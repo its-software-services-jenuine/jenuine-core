@@ -24,8 +24,8 @@ namespace Its.Jenuiue.Core.Actions.Customers
         {
             var fields = new List<string>() 
             {
-                "CustomersId",
-                "CustomersName",
+                "CustomerId",
+                "CustomerName",
                 "Description"
             };
 

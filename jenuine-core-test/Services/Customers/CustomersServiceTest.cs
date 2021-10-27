@@ -39,7 +39,7 @@ namespace Its.Jenuiue.Core.Services.Customers
 
             var m = svc.AddCustomer(new MCustomer());
             m.Labels.Add(lbl);           
-
+            svc.UpdateCustomer(m);
             svc.DeleteCustomerById(m);
             svc.DeleteCustomerAll();
         }

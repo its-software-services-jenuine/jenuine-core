@@ -65,20 +65,24 @@ namespace Its.Jenuiue.Core.Actions.Customers
             var p1 = new MCustomer() 
             { 
                 CustomerId = "UpdateCustomersByIdActionTestId",
-                CustomerName = "UpdateCustomersByIdActionTestName" 
+                CustomerName = "UpdateCustomersByIdActionTestName",
+               
+                
             };
             var m = addAct.Apply<MCustomer>(p1);
             m.CustomerName = "UpdateCustomersName";
 
             var updateByIdAct = new UpdateCustomersByIdAction(db, orgId);
             updateByIdAct.Apply<MCustomer>(m);
-
+      
             var getByIdAct = new GetCustomersByIdAction(db, orgId);
             var u = getByIdAct.Apply<MCustomer>(m);
-
             Assert.Equal("UpdateCustomersName", u.CustomerName);
+           
+
         }
 
+    
         [Fact]
         public void GetCustomersByIdNothingActionTest()
         {
