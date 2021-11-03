@@ -4,20 +4,24 @@ using Its.Jenuiue.Core.Models.Organization;
 
 using MongoDB.Driver;
 
-namespace Its.Jenuiue.Core.Actions.Registration
+namespace Its.Jenuiue.Core.Actions.Organizes
 {
-    public class GetRegistrationAction : BaseActionQuery
+    public class GetOrganizesAction : BaseActionQuery
     {
-        public GetRegistrationAction(IDatabase conn, string orgId)
+        public GetOrganizesAction(IDatabase conn, string orgId)
         {
             Init(conn, orgId);
         }
         
+        protected override bool UseGlobalDb()
+        {
+            return true;
+        }
+                
         protected override string GetCollectionName()
         {
-            return "registrations";
+            return "organizes";
         }
-
         
         protected override FilterDefinition<T> GetFilter<T>(T model)
         {
@@ -28,3 +32,4 @@ namespace Its.Jenuiue.Core.Actions.Registration
     }
         
 }
+
