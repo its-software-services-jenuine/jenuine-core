@@ -21,7 +21,7 @@ namespace Its.Jenuiue.Core.Actions.Assets
             {
                 "AssetId",
                 "AssetName",
-                "Description",
+                "Description"
                 
             };
 
