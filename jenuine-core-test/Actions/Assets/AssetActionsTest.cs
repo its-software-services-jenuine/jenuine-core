@@ -84,7 +84,7 @@ namespace Its.Jenuiue.Core.Actions.Assets
             { 
                 AssetId = "UpdateAssetByIdActionTestId",
                 AssetName = "UpdateAssetByIdActionTestName",
-                IsRegistered = false                
+                IsRegistered = true          
             };
             var m = addAct.Apply<MAsset>(p1);
 
@@ -96,7 +96,7 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            Assert.Equal(false, u.IsRegistered);
+            Assert.Equal(true, u.IsRegistered);
         }
 
         [Fact]
