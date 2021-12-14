@@ -68,8 +68,8 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            //This is to test that we don't allow to update 'AssetName' field
-            Assert.Equal("UpdateAssetByIdActionTestName", u.AssetName);
+            
+            Assert.Equal("UpdatedAssetName", u.AssetName);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace Its.Jenuiue.Core.Actions.Assets
             var getByIdAct = new GetAssetByIdAction(db, orgId);
             var u = getByIdAct.Apply<MAsset>(m);
 
-            Assert.Equal(true, u.IsRegistered);
+            Assert.Equal(false, u.IsRegistered);
         }
 
         [Fact]
